@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const BudgetList = (props) => {
     return (
         <div className="lists">
@@ -16,7 +17,7 @@ const BudgetList = (props) => {
                             <tr>
                                 <td>{item.item}</td>
                                 <td>{item.amount}</td>
-                                <td><button onClick={() => props.removeItem(item.key)}>X</button></td>
+                                <td><button onClick={() => props.removeBudgetItem(item.key)}>X</button></td>
                             </tr>
                         )
                     })}
@@ -35,7 +36,7 @@ const BudgetList = (props) => {
                             <tr>
                                 <td>{item.item}</td>
                                 <td>{item.amount}</td>
-                                <td><button>X</button></td>
+                                <td><button onClick={() => props.removeBudgetItem(item.key)}>X</button></td>
                             </tr>
                         )
                     })}
@@ -54,7 +55,7 @@ const BudgetList = (props) => {
                             <tr>
                                 <td>{item.item}</td>
                                 <td>{item.amount}</td>
-                                <td><button>X</button></td>
+                                <td><button onClick={() => props.removeBudgetItem(item.key)}>X</button></td>
                             </tr>
                         )
                     })}
@@ -73,7 +74,7 @@ const BudgetList = (props) => {
                             <tr>
                                 <td>{item.item}</td>
                                 <td>{item.amount}</td>
-                                <td><button>X</button></td>
+                                <td><button onClick={() => props.removeBudgetItem(item.key)}>X</button></td>
                             </tr>
                         )
                     })}
@@ -92,7 +93,7 @@ const BudgetList = (props) => {
                             <tr>
                                 <td>{item.item}</td>
                                 <td>{item.amount}</td>
-                                <td><button>X</button></td>
+                                <td><button onClick={() => props.removeBudgetItem(item.key)}>X</button></td>
                             </tr>
                         )
                     })}
@@ -111,7 +112,7 @@ const BudgetList = (props) => {
                             <tr>
                                 <td>{item.item}</td>
                                 <td>{item.amount}</td>
-                                <td><button>X</button></td>
+                                <td><button onClick={() => props.removeBudgetItem(item.key)}>X</button></td>
                             </tr>
                         )
                     })}
