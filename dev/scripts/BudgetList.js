@@ -16,7 +16,7 @@ const BudgetList = (props) => {
                             <tr>
                                 <td>{item.item}</td>
                                 <td>{item.amount}</td>
-                                <td><button>X</button></td>
+                                <td><button onClick={() => props.removeItem(item.key)}>X</button></td>
                             </tr>
                         )
                     })}

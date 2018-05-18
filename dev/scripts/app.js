@@ -24,7 +24,6 @@ class App extends React.Component {
       amount: 0,
       budgetCategory: "",
       item: "" , 
-      //budgetItems: [],
       home: [],
       food: [],
       transportation: [],
@@ -35,11 +34,13 @@ class App extends React.Component {
     this.handleInitialSubmit = this.handleInitialSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleItemSubmit = this.handleItemSubmit.bind(this);
+    this.removeItem = this.removeItem.bind(this);
   } //constructor ends
 
   componentDidMount() {
     const dbRef = firebase.database().ref('budgetItems');
     dbRef.on('value', (snapshot) => {
+      //console.log(snapshot);
       const data = snapshot.val();
       const budgetItemsArray = [];
       for (let item in data) {
@@ -47,9 +48,7 @@ class App extends React.Component {
         budgetItemsArray.push(data[item]);
       }
       console.log(budgetItemsArray);
-      // this.setState({
-      //   budgetItems: budgetItemsArray
-      // })
+
       const homeArray = budgetItemsArray.filter((item) => {
         return item.category === 'home'
       });
@@ -76,7 +75,7 @@ class App extends React.Component {
         savings: saveArray,
         other: otherArray
       })
-    }); //dbRef event listener ends
+    }) //dbRef event listener ends
   }//componentDidMount ends
 
   handleInitialSubmit(e) {
@@ -85,7 +84,7 @@ class App extends React.Component {
     this.setState({
       totalBudget: this.state.initialBudget, 
       updatedBudget: this.state.initialBudget
-    })
+    });
   } //handleIntial submit ends
 
   handleChange(e) {
@@ -99,7 +98,8 @@ class App extends React.Component {
     const listItem = {
       category: this.state.budgetCategory,
       item: this.state.item,
-      amount: this.state.amount
+      amount: this.state.amount,
+      key: ''
     }
     const dbRef= firebase.database().ref('budgetItems');
     dbRef.push(listItem);
@@ -114,6 +114,10 @@ class App extends React.Component {
     })
   } //handleItemSubmit ends
 
+  removeItem(keyToRemove) {
+    console.log('clicked remove');
+    firebase.database().ref(`budgetItems/${keyToRemove}`).remove();
+  }
 
   render() {
     return (
@@ -138,6 +142,7 @@ class App extends React.Component {
         billsInfo={this.state.bills}
         saveInfo={this.state.savings}
         otherInfo={this.state.other}
+        removeItem={this.removeItem}
         />
         <div className="totals">
           <p>Remaining budget: {this.state.updatedBudget}</p>
