@@ -21,7 +21,7 @@ const Mainscreen = (props) => {
                     <input type="text" id="item" name="item" onChange={props.whenChange}/>
                     <label htmlFor="amount">Enter the amount to budget for this item:</label>
                     <input type="number" id="amount" name="amount" onChange={props.whenChange}/>
-                    <input type="submit" value="Add to budget" onClick={props.handleBudgetUpdate}/>
+                    <input type="submit" value="Add to budget" />
                 </form>
             </div> {/* budget form */}
         </div> //main screen div ends

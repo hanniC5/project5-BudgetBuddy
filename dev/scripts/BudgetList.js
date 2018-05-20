@@ -3,7 +3,11 @@ import React from 'react';
 
 const BudgetList = (props) => {
     return (
-        <div className="lists">
+        <div id="lists">
+            <div className="totals">
+                <p>Remaining budget: {props.updatedBudget}</p>
+                <p>Your total budget is: {props.totalBudget}</p>
+            </div>
             <h3>Home</h3>
             <table id="home">
                 <tr>
@@ -14,7 +18,7 @@ const BudgetList = (props) => {
                 <React.Fragment>
                     {props.homeInfo.map((item)=> {
                         return (
-                            <tr>
+                            <tr key={props.key}>
                                 <td>{item.item}</td>
                                 <td>{item.amount}</td>
                                 <td><button onClick={() => props.removeBudgetItem(item.key)}>X</button></td>
