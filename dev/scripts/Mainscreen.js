@@ -9,6 +9,7 @@ const Mainscreen = (props) => {
                 <form className="listForm" onSubmit={props.whenSubmit}>
                     <label htmlFor="category">Please choose a category</label>
                     <select name="budgetCategory" id="category" onChange={props.whenChange}>
+                        <option value=""></option>
                         <option value="home">Home</option>
                         <option value="food">Food</option>
                         <option value="transportation">Transportation</option>
@@ -20,7 +21,7 @@ const Mainscreen = (props) => {
                     <input type="text" id="item" name="item" onChange={props.whenChange}/>
                     <label htmlFor="amount">Enter the amount to budget for this item:</label>
                     <input type="number" id="amount" name="amount" onChange={props.whenChange}/>
-                    <input type="submit" value="Add to budget"/>
+                    <input type="submit" value="Add to budget" onClick={props.handleBudgetUpdate}/>
                 </form>
             </div> {/* budget form */}
         </div> //main screen div ends
