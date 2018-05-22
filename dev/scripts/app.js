@@ -83,7 +83,7 @@ class App extends React.Component {
         amountInDb += parseInt(data[item].amount);
       }
       this.setState({
-        updatedBudget: amountInDb
+        updatedBudget: this.state.totalBudget - amountInDb
       });
       firebase.database().ref(`budgetItems/totalBudget/${this.state.firebaseKey}`).update({
         updated: amountInDb
@@ -141,9 +141,9 @@ class App extends React.Component {
     }
     const dbRef= firebase.database().ref('budgetItems').child('items');
     dbRef.push(listItem);
-    const updated = this.state.updatedBudget - listItem.amount;
+    //const updated = this.state.updatedBudget - listItem.amount;
     this.setState({
-      updatedBudget: updated,
+      //updatedBudget: updated,
       category: '',
       item: '',
       amount: 0
