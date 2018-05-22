@@ -10,6 +10,11 @@ const sass = require('gulp-sass');
 const plumber = require('gulp-plumber');
 const concat = require('gulp-concat');
 
+// gulp.task('assets', () => {
+// 	return gulp.src('./dev/assets')
+// 		.pipe(gulp.dest('./public/assets'))
+// });
+
 gulp.task('styles', () => {
 	return gulp.src('./dev/styles/**/*.scss')
 		.pipe(sass().on('error', sass.logError))

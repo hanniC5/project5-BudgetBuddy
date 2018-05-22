@@ -22,20 +22,24 @@ class App extends React.Component {
       totalBudget: 0,
       updatedBudget: 0,
       amount: 0,
-      budgetCategory: "",
-      item: "" , 
+      budgetCategory: '',
+      item: '', 
       home: [],
       food: [],
       transportation: [],
       bills: [],
       savings: [],
-      other: []
+      other: [], 
+      view: 'initial'
     }
     this.handleInitialSubmit = this.handleInitialSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleItemSubmit = this.handleItemSubmit.bind(this);
     this.removeBudgetItem = this.removeBudgetItem.bind(this);
     this.handleTotalUpdate = this.handleTotalUpdate.bind(this);
+    this.renderScreenInitial= this.renderScreenInitial.bind(this);
+    this.renderMainscreen = this.renderMainscreen.bind(this);
+    this.resetBudget = this.resetBudget.bind(this);
   } //constructor ends
 
   componentDidMount() {
@@ -108,7 +112,8 @@ class App extends React.Component {
       total: this.state.totalBudget
     }
     this.setState({
-      updatedBudget: this.state.totalBudget
+      updatedBudget: this.state.totalBudget, 
+      view: 'main'
     });
   } //handleIntial submit ends
 
@@ -145,36 +150,68 @@ class App extends React.Component {
     })
   } //handleItemSubmit ends
 
+//method to remove item from list and db on user click of remove button
   removeBudgetItem(keyToRemove) {
     firebase.database().ref(`budgetItems/items/${keyToRemove}`).remove();
   }
 
+//method to render the initial screen  
+  renderScreenInitial() {
+    if(this.state.view == 'initial') {
+      return (
+        <InitialScreen
+          handleInitialSubmit={this.handleInitialSubmit}
+          handleChange={this.handleChange}
+          totalBudget={this.state.totalBudget}
+          handleTotalUpdate={this.handleTotalUpdate}
+        />
+      )
+    } else {
+      return null; 
+    }
+  }
+//method to render the mainscreen
+  renderMainscreen() {
+    if(this.state.view === 'main') {
+      return (
+        <React.Fragment>
+          <Mainscreen
+            whenChange={this.handleChange}
+            whenSubmit={this.handleItemSubmit}
+            updatedBudget={this.state.updatedBudget}
+            totalBudget={this.state.totalBudget}
+            resetBudget={this.resetBudget}
+          />
+          <BudgetList
+            key={this.state.key}
+            homeInfo={this.state.home}
+            foodInfo={this.state.food}
+            transInfo={this.state.transportation}
+            billsInfo={this.state.bills}
+            saveInfo={this.state.savings}
+            otherInfo={this.state.other}
+            removeBudgetItem={this.removeBudgetItem}
+          />
+        </React.Fragment>
+      )
+    } else {
+      return null
+    }
+  } //render mainScreen method ends
+
+//method to reset the whole db and budget list- takes user back to mainscreen 
+resetBudget() {
+  console.log('hi reset budget')
+  this.setState({
+    view: 'initial'
+  })
+}
   render() {
     return (
-      <div> {/* container */}
-        <InitialScreen 
-        handleInitialSubmit={this.handleInitialSubmit}
-        handleChange={this.handleChange}
-        totalBudget={this.state.totalBudget}
-        handleTotalUpdate={this.handleTotalUpdate}
-        />
-        <Mainscreen 
-        whenChange={this.handleChange}
-        whenSubmit={this.handleItemSubmit}
-        //handleBudgetUpdate={this.handleBudgetUpdate} 
-        />
-        <BudgetList 
-        key={this.state.key}
-        updatedBudget={this.state.updatedBudget}
-        totalBudget={this.state.totalBudget}
-        homeInfo={this.state.home}
-        foodInfo={this.state.food}
-        transInfo={this.state.transportation}
-        billsInfo={this.state.bills}
-        saveInfo={this.state.savings}
-        otherInfo={this.state.other}
-        removeBudgetItem={this.removeBudgetItem}
-        />
+      <div id="container"> 
+          {this.renderScreenInitial()}
+          {this.renderMainscreen()}
+        
       </div> /* main container div */
     )
   } //render ends

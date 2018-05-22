@@ -4,36 +4,39 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
-html {
-    font-size: 62.5%;
-    line-height: 1.6;
-}
-body {
-    font-size: 1.6rem;
-    background: gainsboro;
-}
-#app {
-    width: 60%;
-    max-width: 960px;
-    margin: 0 auto;
-}
+//colours
+$black: #1F2421;
+$accentPink: #F9B9F2;
+$light: #E8E9F3;
+$lightBlue: #86C1FF;
+$darkBlue: #4281A4;
 
 //typography
 $mainFont: 'Roboto', sans-serif;
 $titleFont: 'Capriola', sans-serif;
 $paragraphFont: 'Open Sans', sans-serif;
 
-h1 {
-    font-family: $titleFont;
-    font-size: 2rem;
+
+html {
+    font-size: 62.5%;
+    line-height: 1.6;
+}
+body {
+    font-size: 1.6rem;
+    background: lighten($lightBlue, 10%);
+    color: $black;
+}
+#app {
+    width: 90%;
+    max-width: 1280px;
+    margin: 50px auto;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background: $darkBlue;
 }
 
-h2 {
-    font-family: $titleFont;
-    font-size: 1.8rem;
-}
-
-    
 
      
  

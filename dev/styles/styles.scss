@@ -1,8 +1,191 @@
 @import 'globalstyles';
 
+//general styles
 #mainScreen, 
 #initialScreen, 
 #lists,
 .totals {
-    border: 1px solid red;
+    padding: 20px;
+    text-align: center;
+}
+input[type=text], 
+input[type=number] {
+    padding: 10px;
+    font-size: 1.2rem;
+}
+input[type=submit], 
+button {
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-family: $titleFont;
+}
+//Initial screen styles
+#initialScreen {
+    background-image: url(https://images.unsplash.com/photo-1459257831348-f0cdd359235f?ixlib=rb-0.3.5&s=c500ceb896a5fe0adbd53b883f5a7f0a&auto=format&fit=crop&w=800&q=60);
+    background-size: cover;
+    background-position: center;
+    text-align: left;
+    font-family: $titleFont;
+    h1 {
+        color: $black;
+        text-shadow: 2px 2px $accentPink;
+        display: flex;
+        flex-flow: row nowrap;
+        .logo {
+            display: inline-block;
+            width: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                width: 100%;
+            }
+        }
+    }
+    h3 {
+        display: block;
+        width: 50%;
+        font-style: italic;
+    }
+    h2 {
+        width: 40%;
+    }
+    .firstForm {
+        margin-bottom: 20px;
+        width: fit-content;
+        width: -moz-fit-content;
+        border: 2px solid $accentPink;
+        display: flex;
+        flex-flow: row wrap;
+    }
+}
+
+//Mainscreen styles
+#container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row nowrap;
+}
+#mainScreen, 
+#lists {
+    border-radius: 6px;
+    background: $light;
+}
+#mainScreen {
+    width: 38%;
+    display: flex;
+    flex-flow: column wrap;
+    h1 {
+        margin: 0;
+        text-align: left;
+        font-family: $titleFont;
+        font-size: 3rem;
+        text-shadow: 1px 1px $darkBlue, 2px 2px $accentPink, 3px 3px $accentPink;
+        display: flex;
+        flex-flow: row wrap;
+        .logo {
+            display: inline-block;
+            width: 50px;
+            margin-left: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                width: 100%;
+            }
+        }
+    }
+    form {
+        border: 2px inset $black;
+        background: #fff;
+        border-radius: 6px;
+        margin: 20px 0;
+        padding: 10px;
+        display: flex;
+        flex-flow: row wrap;
+        text-align: left;
+        label, 
+        select, 
+        input[type=text], 
+        input[type=number] {
+            display: block;
+            width: 100%;
+            font-family: $mainFont;
+            font-size: 1.8rem;
+            &:focus {
+                border: 3px dotted $accentPink;
+            }
+        }
+        select, 
+        input[type=text],
+        input[type=number] {
+            background: lighten($lightBlue, 15%);
+            padding: 10px;
+        }
+        input[type=submit] {
+            margin: 10px auto;
+            background: $darkBlue;
+            color: $light;
+            border: 2px solid $accentPink;
+            box-shadow: 1px 1px 1px $darkBlue;
+        }
+    }
+    .totals {
+        border: 2px inset $black;
+        background: #fff;
+        border-radius: 6px;
+    }
+    .resetButton {
+        margin-top: 30px;
+        button {
+            margin: 10px auto;
+            background: $darkBlue;
+            color: $light;
+            border: 2px solid $accentPink;
+        }
+    }
+}
+#lists {
+    width: 60%;
+    h3 {
+        font-family: $titleFont;
+        margin-top: 10px;
+        border-bottom: 2px solid $darkBlue;
+        padding: 1px;
+        text-align: left;
+        .icon {
+            display: inline-block;
+            width: 30px;
+            img {
+                width: 100%;
+            }
+        }
+    }
+    table {
+        background: linear-gradient(to bottom, rgba(255,255, 255, 0.7), rgba(255,255,255,0.7)),url(../../public/assets/notebookback.png);
+        width: 100%;
+        table-layout: fixed;
+        thead, 
+        tbody {
+            margin: 0 auto;
+        }
+        th {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            margin: 0;
+            color: $darkBlue;
+        }
+        td{
+            border-bottom: 1px solid $lightBlue;
+            button {
+                padding: 2px 5px;
+                color: $darkBlue;
+                background: $accentPink;
+                border: $lightBlue;
+                border-radius: 6px;
+            }
+        }
+    }
 }

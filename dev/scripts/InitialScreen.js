@@ -3,7 +3,7 @@ import React from 'react';
 const InitialScreen = (props) => {
     return (
         <div id="initialScreen">
-            <h1>Welcome to Budget Buddy!</h1>
+            <h1>Welcome to Budget Buddy! <span className="logo"><img src="../public/assets/piggyBank.png" alt="mock up of a side view of a piggy bank"/></span></h1>
             <h3>The app that helps you easily plan your monthly budget</h3>
             <h2>Please enter your total budget for this month: </h2>
             <form className="firstForm" onSubmit={props.handleInitialSubmit}>
