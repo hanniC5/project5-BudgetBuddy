@@ -31,7 +31,8 @@ button {
         color: $black;
         text-shadow: 2px 2px $accentPink;
         display: flex;
-        flex-flow: row nowrap;
+        flex-flow: row wrap;
+        justify-content: center;
         .logo {
             display: inline-block;
             width: 50px;
@@ -61,13 +62,37 @@ button {
         flex-flow: row wrap;
     }
 }
+@media (max-width: 645px) {
+    #initialScreen {
+        background-image: none;
+        background: $accentPink;
+        text-align: center;
+        h1 {
+            color: $light;
+            text-shadow: 3px 3px $black;
+            .logo {
+                display: block;
+                width: 20%;
+            }
+        }
+        h2, h3 {
+            width: 100%;
+        }
+        .firstForm {
+            width: 100%;
+            border: none;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
 
 //Mainscreen styles
 #container {
     width: 100%;
     display: flex;
     justify-content: space-around;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
 }
 #mainScreen, 
 #lists {
@@ -191,5 +216,15 @@ button {
                 border-radius: 6px;
             }
         }
+    }
+}
+@media (max-width: 960px) {
+    #container {
+        flex-flow: column nowrap;
+    }
+    #mainScreen, 
+    #lists {
+        width: 90%;
+        margin: 10px auto;
     }
 }
